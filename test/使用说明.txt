@@ -1,0 +1,21 @@
+此想法实现网站个人拷贝，经测试成立。
+
+encrypt目录包含root文件夹和encode.php文件。
+root文件放入原始网站，所有的php文件头部的<?php请注释掉。
+其他文件不要管。
+
+原始网站含一个注册测试功能，请配置好conn.php文件里的数据库参数。
+
+crypt目录包含path和static文件夹，以及receive.php和send.html，
+lession.sql为测试数据库文件，请自行导入mysql数据库。对应测试程序
+的conn.php文件配置，此文件在原始网站中。
+
+都搞好了，请分别开启两个web应用，一个端口为800，根目录为crypt，另一个端口
+为801，根目录为encrypt，域名都为localhost。
+
+在地址栏输入http://localhost:800/send.html，测试应该可以通过，本地测试是通过的。
+请不要做和国家法律相违背的事情。
+
+by凤凰张傻 2022/6/13, 我的qq:2553973097
+
+

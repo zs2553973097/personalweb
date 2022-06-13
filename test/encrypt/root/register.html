@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            label{display: block;margin: 2px;}
+            #content{text-align: center;width: 100%;height: 700px;border:0px solid red;}
+            #form{width: 20%;height:700px;display: table-cell;vertical-align:middle;background-color: green;background: url("./static/image/background.jpg") no-repeat fixed center}
+            form{width: 400px;margin: 0 auto;}
+        </style>
+    </head>
+    <body>
+        <div>注册用户测试</div>
+        <div id="content">
+            <div id="form">
+                <form action="register.php" method="post">
+                    <label>姓名:<input type = "text" name = "name" placeholder="张傻" /></label>
+                    <label>密码:<input type = "password" name = "password" /></label>
+                    <label>年龄:<input type = "text" name ="age" placeholder="48" /></label>
+                    <input type = "submit" value = "提交" />
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

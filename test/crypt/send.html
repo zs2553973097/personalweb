@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+by凤凰张傻 2022、6、13，qq：2553973097
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="static/js/jquery2.1.4.js"></script>
+        
+    </head>
+    <body>
+        <div>拷贝网站为个人网站</div>
+        <input type="button" onclick="send();" value="获取个人网站" />
+        <a id="visit" href ="#" target="about_blank">访问个人网站</a>
+        <a href="javascript:;" id="del" >删除网站拷贝</a>
+        <input id="path" type="hidden" />
+        <script>
+            //可以设置需要解密文件的类型，作为ajax参数传入后台
+            function send(){
+                $.ajax({
+                    dataType:'json',
+                    method:'post',
+                    data:{
+                        getFlag:true
+                    },
+                    url:'http://localhost:801/encode.php',
+                    success:function(data){
+                        if(data.code==200){
+                            var encodeJson = data.data;
+                            console.log(encodeJson);
+                            $.ajax({
+                                dataType:'json',
+                                method:'post',
+                                data:{
+                                    data:encodeJson
+                                },
+                                url:'receive.php',
+                                success:function(data){
+                                    if(data.code==200){
+                                        var pathData = data.data;
+                                        console.log(pathData);
+                                        $("#visit").attr('href',pathData+'/register.html');
+                                        $("#path").val(pathData);
+                                        $("#del").on("click",{path:pathData},function(e){
+                                            //alert(e.data.path);
+                                            $.ajax({
+                                                dataType:'json',
+                                                method:'post',
+                                                data:{
+                                                    path:e.data.path
+                                                },
+                                                url:'del.php',
+                                                success:function(data){
+                                                    if(data.code==200){
+                                                        alert(data.msg);
+                                                    }else{
+                                                        alert(data.msg);
+                                                    }
+                                                },
+                                                error:function(){
+                                                    alert('提交删除错误');
+                                                }
+                                            });
+                                        });
+                                    }
+                                },
+                                error:function (){
+                                    alert('第二次提交错误');
+                                }
+                            });
+                        }
+                    },
+                    error:function(){
+                        alert('第一次提交错误');
+                    }
+                });
+            }
+        </script>
+    </body>
+    
+</html>
